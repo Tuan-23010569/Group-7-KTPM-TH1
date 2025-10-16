@@ -86,3 +86,5 @@ Mục tiêu của hệ thống:
 6. **UC6: Quản lý người dùng & thống kê**  
    - **Actor:** Admin  
    - **Mô tả:** Quản lý tài khoản người dùng, xem thống kê lượt nghe, lượt yêu thích, báo cáo.
+   
+### 3.1.2. Sơ đồ diagram Use-case User:
