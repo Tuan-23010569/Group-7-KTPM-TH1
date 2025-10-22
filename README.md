@@ -261,5 +261,18 @@ classDiagram
 2.    chi tiết sách → mua sách → mua xong sách sẽ thêm vào thư viện 
 3.    thư viện → trang nghe sách nói 
 4.    trang cài đặt → view profile 
+## 5. Kết quả và đánh giá
+•	Kết quả đạt được
+- Giao diện trực quan, nhất quán với brand màu xanh-than.
+-	Toàn bộ luồng từ đăng nhập đến nhận vé được prototype hoá trên Figma.
+-	Use case và sequence diagram đã mô tả đầy đủ luồng nghiệp vụ.
+  
+•	Ưu điểm
+-	Trải nghiệm người dùng mượt mà, ít bước thừa.
+-	Thiết kế responsive, dễ mở rộng.
+  
+•	Nhược điểm & Đề xuất cải tiến
+-	Cần bổ sung flow xử lý sự cố thanh toán thất bại.
+-	Tiếp theo: tích hợp API thực, kiểm thử chức năng mua sách và thanh toán.
 
 
