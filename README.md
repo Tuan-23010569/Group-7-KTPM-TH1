@@ -256,4 +256,10 @@ classDiagram
         + refund()
     }
 ```
+## 4.UI Flow
+1.    Splash Screen → 2. Đăng nhập / Đăng kí → 3. Home(hiển thị danh list sách)
+2.    chi tiết sách → mua sách → mua xong sách sẽ thêm vào thư viện 
+3.    thư viện → trang nghe sách nói 
+4.    trang cài đặt → view profile 
+
 
