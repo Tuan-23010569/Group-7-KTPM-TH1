@@ -71,13 +71,13 @@ Mục tiêu của hệ thống:
    - **Actor:** User  
    - **Mô tả:** Xem danh sách sách nói, tìm kiếm theo thể loại, tên sách hoặc tác giả.
 
-3. **UC3: Nghe sách nói**  
+3. **UC3: Cài đặt**  
    - **Actor:** User  
-   - **Mô tả:** Phát nội dung sách nói, có thể điều chỉnh tốc độ, tua nhanh/chậm, nghe nền.
+   - **Mô tả:** View profile, thông báo, bộ nhớ lưu trữ.
 
-4. **UC4: Quản lý danh sách yêu thích**  
+4. **UC4: Thư viện**  
    - **Actor:** User  
-   - **Mô tả:** Thêm hoặc xóa sách khỏi danh sách cá nhân để dễ dàng truy cập lại sau.
+   - **Mô tả:** Thêm hoặc xóa sách khỏi danh sách thư viện để dễ dàng truy cập lại sau.
 
 5. **UC5: Quản lý nội dung sách nói**  
    - **Actor:** Admin  
