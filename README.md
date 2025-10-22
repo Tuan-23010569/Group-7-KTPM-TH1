@@ -97,3 +97,67 @@ Mục tiêu của hệ thống:
 ### 3.2.3. Sơ đồ Sequence diagram Admin:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramAdmin.png)
 
+## 3.3. Thiết kế hướng đối tượng (Class Diagram) 
+| Class      | Thuộc tính                                              | Phương thức                         |
+|------------|---------------------------------------------------------|-------------------------------------|
+| **User**   | userId, name, email, password                           | register(), login(), logout()       |
+| **Movie**  | movieId, title, genre, duration                         | getDetails(), listShowtimes()       |
+| **Showtime** | showtimeId, datetime, screen                          | getAvailableSeats()                 |
+| **Seat**   | seatId, row, number, status                             | reserve(), release()                |
+| **Booking** | bookingId, userId, showtimeId, seatList, totalAmount, status | createBooking(), cancelBooking()    |
+| **Payment** | paymentId, bookingId, amount, status                   | processPayment(), refund()          |
+
+
+```mermaid
+classDiagram
+    class User {
+        + userId: String
+        + name: String
+        + email: String
+        + password: String
+        + register()
+        + login()
+        + logout()
+    }
+    class Movie {
+        + movieId: String
+        + title: String
+        + genre: String
+        + duration: Int
+        + getDetails()
+        + listShowtimes()
+    }
+    class Showtime {
+        + showtimeId: String
+        + datetime: DateTime
+        + screen: String
+        + getAvailableSeats()
+    }
+    class Seat {
+        + seatId: String
+        + row: String
+        + number: Int
+        + status: String
+        + reserve()
+        + release()
+    }
+    class Booking {
+        + bookingId: String
+        + userId: String
+        + showtimeId: String
+        + seatList: List<Seat>
+        + totalAmount: Float
+        + status: String
+        + createBooking()
+        + cancelBooking()
+    }
+    class Payment {
+        + paymentId: String
+        + bookingId: String
+        + amount: Float
+        + status: String
+        + processPayment()
+        + refund()
+    }
+```
+
