@@ -92,7 +92,7 @@ Mục tiêu của hệ thống:
 ### 3.1.3. Sơ đồ diagram Use-case Admin:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/User%20Diagram.drawio.png)
 ### 3.2. Flow (Sequence Diagram)
-####3.2.1. Flow:
+#### 3.2.1. Flow:
 
 User → App: Mở app, hiển thị Splash Screen
 App → Server: Kiểm tra trạng thái đăng nhập
