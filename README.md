@@ -96,4 +96,124 @@ Mục tiêu của hệ thống:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramUser.png)
 ### 3.2.3. Sơ đồ Sequence diagram Admin:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramAdmin.png)
+classDiagram
+    %% ============================
+    %% USER & ADMIN CLASSES
+    %% ============================
+    class User {
+        + user_id: Int
+        + username: String
+        + email: String
+        + password: String
+        + avatar: String
+        + status: Enum(active, blocked)
+        + created_at: DateTime
+        + register()
+        + login()
+        + logout()
+    }
+
+    class Admin {
+        + admin_id: Int
+        + username: String
+        + password: String
+        + role: Enum(content, user, super)
+        + created_at: DateTime
+        + createContent()
+        + manageUser()
+        + updateCategory()
+    }
+
+    %% ============================
+    %% CONTENT & CATEGORY
+    %% ============================
+    class Category {
+        + category_id: Int
+        + category_name: String
+        + description: String
+        + addCategory()
+        + editCategory()
+        + deleteCategory()
+    }
+
+    class Content {
+        + content_id: Int
+        + title: String
+        + description: String
+        + thumbnail: String
+        + file_url: String
+        + category_id: Int
+        + created_by: Int
+        + created_at: DateTime
+        + status: Enum(public, private)
+        + upload()
+        + update()
+        + delete()
+    }
+
+    %% ============================
+    %% USER INTERACTIONS
+    %% ============================
+    class Library {
+        + library_id: Int
+        + user_id: Int
+        + content_id: Int
+        + added_at: DateTime
+        + addToLibrary()
+        + removeFromLibrary()
+    }
+
+    class History {
+        + history_id: Int
+        + user_id: Int
+        + content_id: Int
+        + watched_at: DateTime
+        + recordWatch()
+        + clearHistory()
+    }
+
+    class Comment {
+        + comment_id: Int
+        + user_id: Int
+        + content_id: Int
+        + comment_text: String
+        + created_at: DateTime
+        + addComment()
+        + deleteComment()
+    }
+
+    class Rating {
+        + rating_id: Int
+        + user_id: Int
+        + content_id: Int
+        + score: Int (1–5)
+        + rated_at: DateTime
+        + rateContent()
+        + updateRating()
+    }
+
+    class SearchHistory {
+        + search_id: Int
+        + user_id: Int
+        + keyword: String
+        + searched_at: DateTime
+        + recordSearch()
+        + clearSearchHistory()
+    }
+
+    %% ============================
+    %% RELATIONSHIPS
+    %% ============================
+    User "1" --> "many" Library : owns >
+    User "1" --> "many" History : watches >
+    User "1" --> "many" Comment : writes >
+    User "1" --> "many" Rating : rates >
+    User "1" --> "many" SearchHistory : searches >
+
+    Admin "1" --> "many" Content : creates >
+    Category "1" --> "many" Content : groups >
+    Content "1" --> "many" Comment : receives >
+    Content "1" --> "many" Rating : gets >
+    Content "1" --> "many" Library : saved in >
+    Content "1" --> "many" History : viewed in >
 
