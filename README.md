@@ -89,3 +89,10 @@ Mục tiêu của hệ thống:
    
 ### 3.1.2. Sơ đồ diagram Use-case User:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/User%20Diagram.drawio%20(1).png)
+### 3.1.3. Sơ đồ diagram Use-case Admin:
+![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/User%20Diagram.drawio.png)
+### 3.2. Flow (Sequence Diagram)
+### 3.2.2. Sơ đồ Sequence diagram User:
+![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramUser.png)
+### 3.2.3. Sơ đồ Sequence diagram Admin:
+![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramAdmin.png)
