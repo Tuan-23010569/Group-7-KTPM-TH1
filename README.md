@@ -92,6 +92,36 @@ Mục tiêu của hệ thống:
 ### 3.1.3. Sơ đồ diagram Use-case Admin:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/User%20Diagram.drawio.png)
 ### 3.2. Flow (Sequence Diagram)
+####3.2.1. Flow:
+
+User → App: Mở app, hiển thị Splash Screen
+App → Server: Kiểm tra trạng thái đăng nhập
+Server → App: Trả về kết quả (đã đăng nhập hoặc chưa)
+User → App: Chọn Đăng ký / Đăng nhập
+App → Server: Gửi thông tin đăng ký / đăng nhập
+Server → App: Xác thực và trả về thông tin người dùng
+App → User: Hiển thị trang Home (danh sách sách nói)
+
+User → App: Chọn một cuốn sách
+App → Server: Yêu cầu thông tin chi tiết sách
+Server → App: Trả về chi tiết (tên, tác giả, giá, audio preview...)
+User → App: Nhấn Mua sách
+App → PaymentGateway: Khởi tạo giao dịch thanh toán
+PaymentGateway → App: Xác nhận thanh toán thành công
+App → Server: Gửi yêu cầu lưu thông tin sách đã mua
+Server → DB: Cập nhật sách vào thư viện người dùng
+Server → App: Phản hồi thành công
+App → User: Hiển thị thông báo Mua thành công
+
+User → App: Mở Thư viện
+App → Server: Lấy danh sách sách đã mua
+Server → App: Trả về danh sách
+App → User: Hiển thị trang nghe sách nói (Audio Player)
+
+User → App: Mở Trang cài đặt / Profile
+App → Server: Lấy thông tin cá nhân
+Server → App: Trả về dữ liệu
+App → User: Hiển thị thông tin cá nhân và tuỳ chỉnh
 ### 3.2.2. Sơ đồ Sequence diagram User:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramUser.png)
 ### 3.2.3. Sơ đồ Sequence diagram Admin:
