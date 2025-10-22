@@ -123,17 +123,18 @@ App → Server: Lấy thông tin cá nhân
 Server → App: Trả về dữ liệu
 App → User: Hiển thị thông tin cá nhân và tuỳ chỉnh
 
-Giải thích:
+**Giải thích:**
 
-Người dùng tương tác qua app để đăng nhập, xem và mua sách.
+   1.Người dùng tương tác qua app để đăng nhập, xem và mua sách.
 
-App trung gian kết nối giữa user, server và cổng thanh toán.
+   2.App trung gian kết nối giữa user, server và cổng thanh toán.
 
-Server quản lý dữ liệu người dùng, thư viện sách, và xử lý lưu trữ.
+   3.Server quản lý dữ liệu người dùng, thư viện sách, và xử lý lưu trữ.
 
-PaymentGateway đảm nhiệm xử lý thanh toán (VNPAY, Momo, PayPal...).
+   4.PaymentGateway đảm nhiệm xử lý thanh toán (VNPAY, Momo, PayPal...).
 
-Sau khi thanh toán, sách được thêm vào thư viện của người dùng để nghe.
+   5.Sau khi thanh toán, sách được thêm vào thư viện của người dùng để nghe.
+   
 ### 3.2.2. Sơ đồ Sequence diagram User:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramUser.png)
 ### 3.2.3. Sơ đồ Sequence diagram Admin:
