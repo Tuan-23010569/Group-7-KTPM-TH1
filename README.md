@@ -101,55 +101,108 @@ Mục tiêu của hệ thống:
 | Class      | Thuộc tính                                              | Phương thức                         |
 |------------|---------------------------------------------------------|-------------------------------------|
 | **User**   | userId, name, email, password                           | register(), login(), logout()       |
-| **Movie**  | movieId, title, genre, duration                         | getDetails(), listShowtimes()       |
-| **Showtime** | showtimeId, datetime, screen                          | getAvailableSeats()                 |
-| **Seat**   | seatId, row, number, status                             | reserve(), release()                |
-| **Booking** | bookingId, userId, showtimeId, seatList, totalAmount, status | createBooking(), cancelBooking()    |
+| **Admin**  | admin_id, username, password, role, created_at          | createContent(), manageUser(), updateCategory() |
+| **Content** | content_id, title, description, thumbnail, file_url, category_id, created_by, created_at, status | upload(), update(), delete()  |
+| **Library** | library_id, user_id, content_id, added_at            | addToLibrary(), removeFromLibrary()   |
+| **History** | history_id, user_id, content_id, watched_at | recordWatch(), clearHistory()  |
+| **Comment** | comment_id, user_id, content_id, comment_text, created_at |addComment(), deleteComment()    |
+| **Rating** |rating_id, user_id, content_id, score, rated_at  | rateContent(), updateRating()  |
+| **SearchHistory** |search_id, user_id, keyword, searched_at  | recordSearch(), clearSearchHistory()  |
 | **Payment** | paymentId, bookingId, amount, status                   | processPayment(), refund()          |
-
 
 ```mermaid
 classDiagram
     class User {
-        + userId: String
-        + name: String
+        + user_id: Int
+        + username: String
         + email: String
         + password: String
+        + avatar: String
+        + status: Enum(active, blocked)
+        + created_at: DateTime
         + register()
         + login()
         + logout()
     }
-    class Movie {
-        + movieId: String
+
+    class Admin {
+        + admin_id: Int
+        + username: String
+        + password: String
+        + role: Enum(content, user, super)
+        + created_at: DateTime
+        + createContent()
+        + manageUser()
+        + updateCategory()
+    }
+    class Category {
+        + category_id: Int
+        + category_name: String
+        + description: String
+        + addCategory()
+        + editCategory()
+        + deleteCategory()
+    }
+
+    class Content {
+        + content_id: Int
         + title: String
-        + genre: String
-        + duration: Int
-        + getDetails()
-        + listShowtimes()
+        + description: String
+        + thumbnail: String
+        + file_url: String
+        + category_id: Int
+        + created_by: Int
+        + created_at: DateTime
+        + status: Enum(public, private)
+        + upload()
+        + update()
+        + delete()
     }
-    class Showtime {
-        + showtimeId: String
-        + datetime: DateTime
-        + screen: String
-        + getAvailableSeats()
+    class Library {
+        + library_id: Int
+        + user_id: Int
+        + content_id: Int
+        + added_at: DateTime
+        + addToLibrary()
+        + removeFromLibrary()
     }
-    class Seat {
-        + seatId: String
-        + row: String
-        + number: Int
-        + status: String
-        + reserve()
-        + release()
+
+    class History {
+        + history_id: Int
+        + user_id: Int
+        + content_id: Int
+        + watched_at: DateTime
+        + recordWatch()
+        + clearHistory()
     }
-    class Booking {
-        + bookingId: String
-        + userId: String
-        + showtimeId: String
-        + seatList: List<Seat>
-        + totalAmount: Float
-        + status: String
-        + createBooking()
-        + cancelBooking()
+
+    class Comment {
+        + comment_id: Int
+        + user_id: Int
+        + content_id: Int
+        + comment_text: String
+        + created_at: DateTime
+        + addComment()
+        + deleteComment()
+    }
+
+    class Rating {
+        + rating_id: Int
+        + user_id: Int
+        + content_id: Int
+        + score: Int (1–5)
+        + rated_at: DateTime
+        + rateContent()
+        + updateRating()
+    }
+
+    class SearchHistory {
+        + search_id: Int
+        + user_id: Int
+        + keyword: String
+        + searched_at: DateTime
+        + recordSearch()
+        + clearSearchHistory()
     }
     class Payment {
         + paymentId: String
