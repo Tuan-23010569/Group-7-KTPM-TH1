@@ -96,3 +96,138 @@ Mục tiêu của hệ thống:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramUser.png)
 ### 3.2.3. Sơ đồ Sequence diagram Admin:
 ![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/diagramAdmin.png)
+# 📚 MEDIA APP DATABASE SCHEMA (MySQL)
+**Author:** Group 7  
+**Project:** User & Admin Page (Figma-based System)  
+**Database Name:** `media_app`  
+
+---
+
+## 🧩 Database Design Overview
+This SQL script creates all necessary tables for managing users, admins, media content, categories, comments, ratings, history, and search tracking.
+
+---
+
+## 💾 SQL Script
+
+```sql
+# 🎯 DATABASE SCHEMA – USER & ADMIN SYSTEM
+# ---------------------------------------
+# Database: media_app
+# Author: Group 7
+# Description: Database structure for User Page & Admin Page (Figma project)
+
+CREATE DATABASE IF NOT EXISTS media_app;
+USE media_app;
+
+# -------------------------------
+# 1️⃣ User Table
+# -------------------------------
+CREATE TABLE User (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    avatar VARCHAR(255),
+    status ENUM('active', 'blocked') DEFAULT 'active',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+# -------------------------------
+# 2️⃣ Admin Table
+# -------------------------------
+CREATE TABLE Admin (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('content', 'user', 'super') DEFAULT 'content',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+# -------------------------------
+# 3️⃣ Category Table
+# -------------------------------
+CREATE TABLE Category (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL,
+    description TEXT
+);
+
+# -------------------------------
+# 4️⃣ Content Table
+# -------------------------------
+CREATE TABLE Content (
+    content_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    thumbnail VARCHAR(255),
+    file_url VARCHAR(255),
+    category_id INT,
+    created_by INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('public', 'private') DEFAULT 'public',
+    FOREIGN KEY (category_id) REFERENCES Category(category_id) ON DELETE SET NULL,
+    FOREIGN KEY (created_by) REFERENCES Admin(admin_id) ON DELETE SET NULL
+);
+
+# -------------------------------
+# 5️⃣ Library Table (User Favorites)
+# -------------------------------
+CREATE TABLE Library (
+    library_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    content_id INT,
+    added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (content_id) REFERENCES Content(content_id) ON DELETE CASCADE
+);
+
+# -------------------------------
+# 6️⃣ History Table
+# -------------------------------
+CREATE TABLE History (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    content_id INT,
+    watched_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (content_id) REFERENCES Content(content_id) ON DELETE CASCADE
+);
+
+# -------------------------------
+# 7️⃣ Comment Table
+# -------------------------------
+CREATE TABLE Comment (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    content_id INT,
+    comment_text TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (content_id) REFERENCES Content(content_id) ON DELETE CASCADE
+);
+
+# -------------------------------
+# 8️⃣ Rating Table
+# -------------------------------
+CREATE TABLE Rating (
+    rating_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    content_id INT,
+    score INT CHECK (score BETWEEN 1 AND 5),
+    rated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (content_id) REFERENCES Content(content_id) ON DELETE CASCADE
+);
+
+# -------------------------------
+# 9️⃣ Search History Table
+# -------------------------------
+CREATE TABLE SearchHistory (
+    search_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    keyword VARCHAR(255),
+    searched_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
+);
+
