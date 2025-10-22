@@ -88,3 +88,4 @@ Mục tiêu của hệ thống:
    - **Mô tả:** Quản lý tài khoản người dùng, xem thống kê lượt nghe, lượt yêu thích, báo cáo.
    
 ### 3.1.2. Sơ đồ diagram Use-case User:
+![image](https://github.com/Tuan-23010569/Group-7-KTPM-TH1/blob/main/images/User%20Diagram.drawio%20(1).png)
